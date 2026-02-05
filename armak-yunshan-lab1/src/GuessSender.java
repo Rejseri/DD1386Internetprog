@@ -1,16 +1,22 @@
 import java.util.*;
+import java.io.*;
 
 
 public class GuessSender {
+
     public String sendResponse(String message, String userForm){
-        Scanner scanner = new Scanner("guess.html");
         StringBuilder parsedHTML = new StringBuilder();
-        
-        // Läser in html filen och lägger den som parsedHTML
-        while (scanner.hasNext()){
-            parsedHTML.append(scanner.nextLine()).append("\n");
+
+        try (Scanner scanner = new Scanner(new File("guess.html"))){
+            // Läser in html filen och lägger den som parsedHTML
+            while (scanner.hasNext()){
+                parsedHTML.append(scanner.nextLine()).append("\n");
+            }
+            
+        } catch (Exception e) {
+            //Fallback om ngt är fel med inlästa filen 
+            return "<html><body>" + message + userForm + "</html></body>";
         }
-        scanner.close();
 
         String reponse = parsedHTML.toString();
 

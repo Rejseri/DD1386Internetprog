@@ -1,9 +1,12 @@
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
+import arcade.GuessMyNumberGame;
+//import arcade.mastermindGame;
 
 public class Server {
 
-    private final int port = 8989;
+    private static final int port = 8989;
 
     public static void main(String[] args) {
         new Server();
@@ -34,6 +37,32 @@ public class Server {
                             System.out.println("Method: " + method);
                             System.out.println("Path: " + path);
                             System.out.println("Version: " + httpVersion);
+
+                            // initaliserar guessSender, guessNumberGame och mastermindGame
+                            GuessSender guessSender = new GuessSender();
+                            GuessMyNumberGame guessNumberGame = new GuessMyNumberGame();
+
+                            String welcomeMessage = guessNumberGame.welcomeMessage();
+                            String request = guessSender.sendResponse(welcomeMessage, """
+                            <form method='POST'>
+                                <input type='number' name='guess'>
+                                <input type='submit' value='submit'>
+                            </form>
+                            """);
+
+                            // 2. Put it in the "Envelope" (HTTP Protocol)
+                            out.write("HTTP/1.1 200 OK\n"); // Status line
+                            out.write("Content-Type: text/html\n"); // Type header
+                            out.write("Content-Length: " + request.length() + "\n"); // Size header
+                            out.write("\n"); // THE MAGIC EMPTY LINE (End of headers)
+                                                        // 3. Send the content
+                            out.write(request);
+                            out.flush();
+                            break;
+                                                        
+
+
+
                             
                         } else if (line.matches("POST\\s+.*")) {
                             // process the POST request skickar data till servern (responsen)
