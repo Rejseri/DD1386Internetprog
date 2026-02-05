@@ -36,8 +36,17 @@ public class Server {
                             System.out.println("Version: " + httpVersion);
                             
                         } else if (line.matches("POST\\s+.*")) {
-                            // process the POST request skickar data till servern
+                            // process the POST request skickar data till servern (responsen)
+                            String[] spaceSplitLine = line.split(" ");
+                            String method = spaceSplitLine[0];
+                            String path = spaceSplitLine[1];
+                            String httpVersion = spaceSplitLine[2];
+                            // parsar på samma sätt som get requesten 
 
+                            System.out.println("Method: " + method);
+                            System.out.println("Path: " + path);
+                            System.out.println("Version: " + httpVersion);
+                            
                         }
                     }
 
