@@ -24,9 +24,20 @@ public class Server {
                         System.out.println(" <<< " + line); // log
 
                         if (line.matches("GET\\s+.*")) {
-                            // process the GET request
+                            // process the GET request, får datan från servern
+                            // raden med GET har alltid formatet GET <method> <path> <httpVersion>
+                            String[] spaceSplitLine = line.split(" ");
+                            String method = spaceSplitLine[0];
+                            String path = spaceSplitLine[1];
+                            String httpVersion = spaceSplitLine[2];
+
+                            System.out.println("Method: " + method);
+                            System.out.println("Path: " + path);
+                            System.out.println("Version: " + httpVersion);
+                            
                         } else if (line.matches("POST\\s+.*")) {
-                            // process the POST request
+                            // process the POST request skickar data till servern
+
                         }
                     }
 
