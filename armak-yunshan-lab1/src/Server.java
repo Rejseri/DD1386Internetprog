@@ -49,33 +49,27 @@ public class Server {
                                 <input type='submit' value='submit'>
                             </form>
                             """);
-
+                            
                             // 2. Put it in the "Envelope" (HTTP Protocol)
                             out.write("HTTP/1.1 200 OK\n"); // Status line
                             out.write("Content-Type: text/html\n"); // Type header
                             out.write("Content-Length: " + request.length() + "\n"); // Size header
-                            out.write("\n"); // THE MAGIC EMPTY LINE (End of headers)
-                                                        // 3. Send the content
+                            out.write("\n"); 
+                            // 3. Send the content
                             out.write(request);
                             out.flush();
                             break;
-                                                        
-
-
-
-                            
+                                                    
                         } else if (line.matches("POST\\s+.*")) {
                             // process the POST request skickar data till servern (responsen)
-                            String[] spaceSplitLine = line.split(" ");
-                            String method = spaceSplitLine[0];
-                            String path = spaceSplitLine[1];
-                            String httpVersion = spaceSplitLine[2];
-                            // parsar på samma sätt som get requesten 
+                            String[] spaceSplitLine = line.split("-"); // splittar hela post requesten till en sträng
+                            String url = spaceSplitLine[1];
 
-                            System.out.println("Method: " + method);
-                            System.out.println("Path: " + path);
-                            System.out.println("Version: " + httpVersion);
-                            
+                            if (url.contains("mastermind")){
+                                // masterind implementation
+                            } else if (url.contains("guessmynumber")) {
+                                // guessmynumber implementation
+                            }
                         }
                     }
 
