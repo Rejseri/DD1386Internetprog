@@ -4,10 +4,23 @@ body {
 }
 
 .row {
-  background: #542f27;
-  color: #d9ccd2;
-  padding: 2px;
-  border: 2px outset;
-  height: 24px;
-  width: 24px;
+  display: flex;
+
 }
+.row Button {
+  background: #542f27;
+  padding: 0px;
+  height: 30px;
+  width: 50px;
+  display: flex;
+  box-shadow: none;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+
+}
+
+/*  gap: 5px;
+  margin-bottom: 5px;
+    color: #d9ccd2;
+*/
