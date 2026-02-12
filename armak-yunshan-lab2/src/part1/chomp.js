@@ -11,8 +11,6 @@ if (answer === "yes") {
   console.log("Bye!");
 }
 
-
-
 function createChocolateBar(rows, cols) {
   if (rows <= 0 || cols <= 0) {
   return undefined; 
