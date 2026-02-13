@@ -25,7 +25,7 @@ function createChocolateBar(rows, cols) {
     }
     board.push(row);
   }  
-  board[0][0] = "P";
+  board[0][0] = "P ";
 
   return board; 
 }

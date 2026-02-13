@@ -4,13 +4,16 @@ import fs from "fs";
 const requestHandler = (req, res) => {
   // TODO: serve all static files: chomp.html, chomp.css and chomp.js
 
-  if (req.url === "/") {
+  if (req.url === "/" && req.method === "GET") {
+    res.writeHead(200, {"Content-Type": "text/html"}) // MIME-type
     res.end(fs.readFileSync("chomp.html"));
   } 
-  else if (req.url === "/chomp.css") {
+  else if (req.url === "/chomp.css" && req.method === "GET") {
+    res.writeHead(200, {"Content-Type": "text/css"})
     res.end(fs.readFileSync("chomp.css"));
   } 
-  else if (req.url === "/chomp.js") {
+  else if (req.url === "/chomp.js" && req.method === "GET") {
+    res.writeHead(200, {"Content-Type": "text/javascript"}) 
     res.end(fs.readFileSync("chomp.js"));
   }
   else {

@@ -1,3 +1,4 @@
+// samma som del 1
 function createChocolateBar(rows, cols) {
   if (rows <= 0 || cols <= 0) {
   return undefined; 
@@ -17,6 +18,7 @@ function createChocolateBar(rows, cols) {
   return gameboard; 
 }
 
+// ny logik 
 function printChocolateBar(gameboard) {
   const gameboardHolder = document.getElementById("gameboardHolder");
   
@@ -39,6 +41,7 @@ function printChocolateBar(gameboard) {
   
 }
 
+// samma som del 1
 function chomp(board, row, col) {
   const chompedBoard = [];
   
@@ -57,6 +60,7 @@ function chomp(board, row, col) {
   return chompedBoard;
 }
 
+// samma som del 1
 function checkWinner(ChompedBoard){
   // om brädet bara har 1 rad och rad 0 bara har en col 
   if (ChompedBoard.length === 1 && ChompedBoard[0].length === 1){
@@ -65,6 +69,7 @@ function checkWinner(ChompedBoard){
   return false 
 }
 
+// ny logik
 function selectBlock(gameboard, row, col){
   if (!gameisON){
     return;
