@@ -22,19 +22,19 @@ function createChocolateBar(rows, cols) {
 function printChocolateBar(gameboard) {
   const gameboardHolder = document.getElementById("gameboardHolder");
   
-  document.getElementById("gameboardHolder").innerHTML = "";
+  document.getElementById("gameboardHolder").innerHTML = "";  T// tömmer inre element i gameholder
   
 
   for (let r = 0; r < gameboard.length; r +=1) {
 
     const rowDiv = document.createElement("div")
-    rowDiv.classList.add("row");
+    rowDiv.classList.add("row");  // lägger till en rad in diven
 
     for (let c = 0; c < gameboard[r].length; c+=1) {
       const button = document.createElement("Button");
       button.innerText = gameboard[r][c];
       button.addEventListener("click", function() {selectBlock(gameboard, r, c)}); 
-      rowDiv.appendChild(button);
+      rowDiv.appendChild(button); // button blir subelement för rad diven
     }
     gameboardHolder.appendChild(rowDiv);
   }
@@ -71,11 +71,11 @@ function checkWinner(ChompedBoard){
 
 // ny logik
 function selectBlock(gameboard, row, col){
-  if (!gameisON){
+  if (!gameisON){ //global om spelet är över
     return;
   }
 
-  if (gameboard[row][col] === "P"){
+  if (gameboard[row][col] === "P"){  
     document.getElementById("message").innerText = ` Press a valid button... The ${
     player[turn % 2]} player turn to select!`;
     return
@@ -84,12 +84,12 @@ function selectBlock(gameboard, row, col){
   gameboard = chomp(gameboard, row, col);
   printChocolateBar(gameboard);
   
-  if (checkWinner(gameboard)) {
+  if (checkWinner(gameboard)) {// checkWinner i slutet
     document.getElementById("message").innerText = `The winner is the ${player[turn % 2]} player`;
     gameisON = false;
     return;
   }
-  turn +=1
+  turn +=1 // lägg till +1 i turn om igen har vunnit
   document.getElementById("message").innerText = `The ${
   player[turn % 2]} player turn to select!`;
     
