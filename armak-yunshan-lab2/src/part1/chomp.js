@@ -12,18 +12,20 @@ if (answer === "yes") {
 }
 
 function createChocolateBar(rows, cols) {
+  // kan inte skapa en chocklad bit med 0 rader och 0 kolumner
   if (rows <= 0 || cols <= 0) {
   return undefined; 
   }
 
   const board = [];
 
+  // itererar och stoppar in en chocklad ruta i brädet
   for (let r = 1; r <= rows; r+=1) {
     const row = [];
     for (let c = 1; c <= cols; c+=1) {
       row.push(String(r) + String(c));
     }
-    board.push(row);
+    board.push(row); 
   }  
   board[0][0] = "P ";
 
@@ -32,9 +34,9 @@ function createChocolateBar(rows, cols) {
 
 
 function printChocolateBar(board) {
+  // itererar genom alla rader och 
   board.forEach(row => console.log(row.join(" ")));
   console.log("\n");
-  
 }
 
 
@@ -42,10 +44,12 @@ function printChocolateBar(board) {
 function chomp(board, row, col) {
   const chompedBoard = [];
   
+  // kopierar 
   for (let r = 0; r < row; r += 1){
     chompedBoard.push(board[r].slice())
   }
   
+  // ta bort rader som ska tas bort 
   for (let r = row; r < board.length; r+=1) {
     chompedBoard.push(board[r].slice(0, col));}
 
@@ -82,12 +86,12 @@ function askCellNumber(board) {
           }
         }
       }
-
       console.log(`Fel val, ruta ${userInput} finns inte i spelplanen, försök igen!`);
     }
   }
 }
 
+// huvudprogram 
 
 console.log("Välkommen till spelet Chomp.")
 console.log("Instruktioner: I spelet kommer du utmanas om att välja ett blocknummer från spelplanen. Det valda blocket och alla block under och till högre kommer att raderas. Spelet går ut på att undvika välja P, den spelare som väljer P förlorar och den andra spelare vinner.")
